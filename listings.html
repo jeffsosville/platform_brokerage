@@ -126,6 +126,40 @@
             stroke: var(--navy);
         }
 
+        /* Mobile Nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            padding: 1rem 1.5rem;
+            z-index: 99;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 0.75rem 0;
+            font-size: 1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--navy);
+        }
+
         /* Page Header */
         .page-header {
             padding: 8rem 0 3rem;
@@ -383,6 +417,13 @@
         </div>
     </header>
 
+    <div class="mobile-nav" id="mobileNav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">About</a>
+        <a href="listings.html">Listings</a>
+        <a href="index.html#contact">Contact</a>
+    </div>
+
     <main>
         <section class="page-header">
             <div class="container">
@@ -548,5 +589,20 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenu.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
