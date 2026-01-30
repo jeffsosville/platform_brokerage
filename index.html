@@ -125,6 +125,40 @@
             stroke: var(--navy);
         }
 
+        /* Mobile Nav */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--gray-100);
+            padding: 1rem 1.5rem;
+            z-index: 99;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 0.75rem 0;
+            font-size: 1rem;
+            color: var(--gray-600);
+            font-weight: 500;
+            border-bottom: 1px solid var(--gray-100);
+        }
+
+        .mobile-nav a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-nav a:hover {
+            color: var(--navy);
+        }
+
         /* Hero */
         .hero {
             padding: 10rem 0 6rem;
@@ -607,6 +641,13 @@
         </div>
     </header>
 
+    <div class="mobile-nav" id="mobileNav">
+        <a href="#about">About</a>
+        <a href="#services">Services</a>
+        <a href="listings.html">Listings</a>
+        <a href="#contact">Contact</a>
+    </div>
+
     <main>
         <section class="hero">
             <div class="container">
@@ -704,7 +745,7 @@
                             <li>Industry-standard valuation</li>
                             <li>Confidential consultation</li>
                         </ul>
-                        <a href="https://platformbrokerage.com/selling/" target="_blank" class="link-arrow">
+                        <a href="#contact" class="link-arrow">
                             Learn more
                             <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </a>
@@ -753,10 +794,10 @@
                 <div class="footer-col">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="https://platformbrokerage.com/buying/" target="_blank">Buying</a></li>
-                        <li><a href="https://platformbrokerage.com/selling/" target="_blank">Selling</a></li>
+                        <li><a href="#services">Buying</a></li>
+                        <li><a href="#services">Selling</a></li>
                         <li><a href="listings.html">Listings</a></li>
-                        <li><a href="https://platformbrokerage.com/faq/" target="_blank">FAQ</a></li>
+                        <li><a href="#contact">FAQ</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
@@ -780,5 +821,21 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const mobileNav = document.getElementById('mobileNav');
+        
+        mobileMenu.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        mobileNav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+    </script>
 </body>
 </html>
